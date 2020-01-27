@@ -1,7 +1,8 @@
 #include <iostream>
 #include <windows.h>
 
-#include "headers/ConsoleOutput.hpp"
+//#include "headers/ConsoleOutput.hpp"
+#include <ConsoleOutput.hpp>
 
 
 //------------------------------------------------------------------------------------------
