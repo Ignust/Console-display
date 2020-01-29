@@ -25,6 +25,7 @@ void ConsoleOutput::print(uint8_t** array, const uint8_t& xSize, const uint8_t& 
 //------------------------------------------------------------------------------------------
 {
     if (array == nullptr){
+        throw 123;
         return;
     }
 
