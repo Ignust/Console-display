@@ -1,9 +1,17 @@
 #include <iostream>
 #include <windows.h>
 
-//#include "headers/ConsoleOutput.hpp"
 #include <ConsoleOutput.hpp>
 
+//------------------------------------------------------------------------------------------
+ConsoleOutput::ConsoleOutput()
+    : mXSize(0),
+      mYSize(0),
+      mArray(nullptr)
+//------------------------------------------------------------------------------------------
+{
+
+}
 
 //------------------------------------------------------------------------------------------
 ConsoleOutput::~ConsoleOutput()
@@ -21,7 +29,7 @@ ConsoleOutput& ConsoleOutput::init()
 }
 
 //------------------------------------------------------------------------------------------
-void ConsoleOutput::print(uint8_t** array, const uint8_t& xSize, const uint8_t& ySize)
+void ConsoleOutput::print(uint8_t** array, const uint8_t xSize, const uint8_t ySize)
 //------------------------------------------------------------------------------------------
 {
     if (array == nullptr){
@@ -37,17 +45,7 @@ void ConsoleOutput::print(uint8_t** array, const uint8_t& xSize, const uint8_t& 
 }
 
 //------------------------------------------------------------------------------------------
-ConsoleOutput::ConsoleOutput()
-    : mXSize(0),
-      mYSize(0),
-      mArray(nullptr)
-//------------------------------------------------------------------------------------------
-{
-
-}
-
-//------------------------------------------------------------------------------------------
-void ConsoleOutput::initArray(uint8_t **array, const uint8_t& xSize, const uint8_t& ySize)
+void ConsoleOutput::initArray(uint8_t **array, const uint8_t xSize, const uint8_t ySize)
 //------------------------------------------------------------------------------------------
 {
     mArray = new uint8_t*[ySize];
@@ -60,10 +58,12 @@ void ConsoleOutput::initArray(uint8_t **array, const uint8_t& xSize, const uint8
             mArray[y][x] = array[y][x];
         }
     }
+
+    system("cls");
 }
 
 //------------------------------------------------------------------------------------------
-void ConsoleOutput::newArray(uint8_t **array, const uint8_t &xSize, const uint8_t &ySize)
+void ConsoleOutput::newArray(uint8_t **array, const uint8_t xSize, const uint8_t ySize)
 //------------------------------------------------------------------------------------------
 {
     if (mArray == nullptr) {
@@ -72,8 +72,6 @@ void ConsoleOutput::newArray(uint8_t **array, const uint8_t &xSize, const uint8_
         deleteArray();
         initArray(array,xSize,ySize);
     }
-
-    system("cls");
 
     if (array == nullptr){
         return;
@@ -88,7 +86,7 @@ void ConsoleOutput::newArray(uint8_t **array, const uint8_t &xSize, const uint8_
 }
 
 //------------------------------------------------------------------------------------------
-void ConsoleOutput::checkArrayChanges(uint8_t **array, const uint8_t &xSize, const uint8_t &ySize)
+void ConsoleOutput::checkArrayChanges(uint8_t **array, const uint8_t xSize, const uint8_t ySize)
 //------------------------------------------------------------------------------------------
 {
     for (int y = 0; y < ySize; ++y) {
@@ -102,7 +100,7 @@ void ConsoleOutput::checkArrayChanges(uint8_t **array, const uint8_t &xSize, con
 }
 
 //------------------------------------------------------------------------------------------
-void ConsoleOutput::updateConsole(const uint8_t &x, const uint8_t &y, const uint8_t &c)
+void ConsoleOutput::updateConsole(const uint8_t x, const uint8_t y, const uint8_t c)
 //------------------------------------------------------------------------------------------
 {
     TCHAR tempC = static_cast<TCHAR>(c);
