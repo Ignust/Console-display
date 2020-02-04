@@ -19,18 +19,16 @@ int main()
         }
     }
 
-    ConsoleOutput mConsoleOutput = ConsoleOutput::init();
-    mConsoleOutput.print(mFildArray, xSize, ySize);
+    ConsoleOutput::init().print(mFildArray, xSize, ySize);
     system("pause");
     mFildArray[0][0] = '1';
-    mConsoleOutput.print(mFildArray, xSize, ySize);
+    ConsoleOutput::init().print(mFildArray, xSize, ySize);
     system("pause");
     mFildArray[1][1] = '1';
-    mConsoleOutput.print(mFildArray, xSize, ySize);
+    ConsoleOutput::init().print(mFildArray, xSize, ySize);
     system("pause");
     mFildArray[2][2] = '1';
-    mConsoleOutput.print(mFildArray, xSize, ySize);
-
+    ConsoleOutput::init().print(mFildArray, xSize, ySize);
 
     for(int a = 0; a < ySize; ++a){
         delete [] mFildArray[a];
